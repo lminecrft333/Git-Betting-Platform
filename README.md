@@ -1,23 +1,37 @@
-# Go to your working directory
-cd path/to/your/folder
+# 🏟️ Sports Betting Script Setup
 
-# Create a new repository folder
-mkdir sports-betting && cd sports-betting
+This script automates the process of creating a GitHub repository for a basic sports betting platform. It initializes a local Git repository, creates a sports betting Python script, and pushes it to a new GitHub repository.
 
-# Initialize Git
-git init
+## 🧳 What Does the Script Do?
 
-# Create the script file
-echo 'import random\n\nmatches = { "Team A vs Team B": {"Team A": 1.8, "Team B": 2.2}, "Team C vs Team D": {"Team C": 1.5, "Team D": 2.5} }\n\ndef place_bet():\n    print("Available matches:")\n    for idx, match in enumerate(matches.keys(), start=1):\n        print(f"{idx}. {match}")\n    match_index = int(input("Select a match (1 or 2): ")) - 1\n    match_name = list(matches.keys())[match_index]\n    teams = matches[match_name]\n    print(f"\\n{match_name} - Odds:")\n    for team, odds in teams.items():\n        print(f"{team}: {odds}")\n    team_choice = input("Enter the team you want to bet on: ")\n    if team_choice not in teams:\n        print("Invalid team selection!")\n        return\n    bet_amount = float(input("Enter your bet amount: $"))\n    winner = random.choice(list(teams.keys()))\n    print(f"\\nMatch Result: {winner} wins!")\n    if team_choice == winner:\n        winnings = bet_amount * teams[team_choice]\n        print(f"Congratulations! You won ${winnings:.2f}")\n    else:\n        print("You lost the bet. Better luck next time!")\n\nif __name__ == "__main__":\n    place_bet()' > sports_betting.py
+1. **Navigate to a working directory** where you want to create the project.
+2. **Creates a new directory** for the sports betting project and initializes Git.
+3. **Generates the Python betting script** (`sports_betting.py`) with the functionality to place a bet on two sports matches.
+4. **Initializes a GitHub repository** and pushes the script to it.
 
-# Initialize Git and make first commit
-git add .
-git commit -m "Initial commit with sports betting script"
+## 🖥️ How the Script Works
 
-# Create a new GitHub repository
-gh repo create sports-betting --public --source=. --remote=origin
+This setup script does the following:
 
-# Push the code to GitHub
-git branch -M main
-git push -u origin main
+- It initializes a new Git repository in a folder called `sports-betting`.
+- It creates a Python script that simulates basic sports betting with predefined matches and odds.
+- The user can select a match, place a bet, and view the result.
+- The script then pushes everything to a new GitHub repository called `sports-betting`.
+
+## 📦 Requirements
+
+Before running the script, ensure that you have the following installed:
+
+- **Git**: For version control and pushing to GitHub.
+- **GitHub CLI (`gh`)**: For creating a GitHub repository from the command line.
+
+## 🚀 How to Use
+
+1. Clone or download this script file (`setup_sports_betting_repo.sh`).
+2. Open a terminal and navigate to your desired directory.
+3. Run the following commands:
+
+```bash
+chmod +x setup_sports_betting_repo.sh
+./setup_sports_betting_repo.sh
 
